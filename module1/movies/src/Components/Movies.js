@@ -9,7 +9,9 @@ export default class Movies extends Component {
             movies:[],
             currSearchText:'',
             currPage:1,
-            limit:4
+            limit:4,
+            cGenre:'All Genres',
+            genres:[{_id: 'abcd',name: 'All Genres'}]        
         }
     }
     onDelete = (id)=>{
@@ -23,9 +25,12 @@ export default class Movies extends Component {
 
     async componentDidMount(){
         let promise = axios.get("https://backend-react-movie.herokuapp.com/movies");
+        let promise2 = axios.get("https://backend-react-movie.herokuapp.com/genres");
         let data = await promise;
+        let data2 = await promise2;
         this.setState({
-            movies:data.data.movies
+            movies:data.data.movies,
+            genres:[...this.state.genres,...data2.data.genres]
         })
 
     }
@@ -60,9 +65,14 @@ export default class Movies extends Component {
         }
         this.setState({movies:toBeSorted});
     }
+    handleGenreChange=(genre)=>{
+        this.setState({
+            cGenre:genre
+        })
+    }
 
     render() {
-        let {movies,currSearchText,currPage,limit} = this.state;
+        let {movies,currSearchText,currPage,limit,cGenre,genres} = this.state;
         let filterMovies =[];
         
         if(currSearchText!='')
@@ -75,6 +85,11 @@ export default class Movies extends Component {
         }
         else{
             filterMovies=movies;
+        }
+        if(cGenre!='All Genres'){
+            filterMovies=filterMovies.filter(function(movieObj){
+                return movieObj.genre.name==cGenre;
+            })
         }
         let nummberOfPages=Math.ceil(filterMovies.length/limit);
         let pageNumberArr=[];
@@ -89,7 +104,16 @@ export default class Movies extends Component {
         return (
             <div className='row'>
               <div className='col-3'>
-                  <h1>Hello</h1>
+              <ul className="list-group">
+            {
+                genres.map((genreObj)=>(
+                    <li onClick={()=>this.handleGenreChange(genreObj.name)} key={genreObj._id} className='list-group-item'>
+                        {genreObj.name}
+                    </li>
+                ))
+            }
+            </ul>
+            <h5>Current Genre :{cGenre}</h5>
               </div>
               <div className='col-9'>
               <input value={this.state.currSearchText} onChange={this.handleChange} type='text'></input>
