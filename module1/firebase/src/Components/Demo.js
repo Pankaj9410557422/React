@@ -29,10 +29,10 @@ function Demo() {
     }
     const handleSignOut = async()=>{
         try{
-            setLoading =true;
+            setLoading(true);
             let res = await auth.signOut;
             setUser(null);
-            setLoading(fasle);
+            setLoading(false);
         }
         catch(e){
             setError(e.message);
