@@ -23,10 +23,13 @@ export const fetchUsers=()=>{
     return async (dispatch)=>{
         dispatch(fetchUsersRequest());
         try{
-
+            let res = await axios.get('https://jsonplaceholder.typicode.com/users');
+            let users = res.data;
+            dispatch(fetchUsersSuccess(users));
         }
-        catch{
-            
+        catch(e){
+            let errmsg = e.message;
+            dispatch(fetchUsersFailure(errmsg));
         }
     }
 }
