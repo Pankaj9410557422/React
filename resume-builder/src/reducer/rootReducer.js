@@ -1,26 +1,16 @@
-import { combineReducers } from "redux";
+import {combineReducers} from 'redux';
 import contactReducer from './contactReducer';
-import documentReducer from "./documentReducer";
-import educationReducer from "./educationReducer";
-import authReducer from "./authReducer";
+import documentReducer from './documentReducer';
+import educationReducer from './educationReducer';
 import {firestoreReducer} from 'redux-firestore';
 import {firebaseReducer} from 'react-redux-firebase'
-import initialState from './initialState.json';
-import * as actionTypes from '../actions/actionTypes'
-const appReducer = combineReducers({
+
+const rootReducer = combineReducers({
     firestore:firestoreReducer,
     firebase:firebaseReducer,
     contactSection:contactReducer,
-    educationSection: educationReducer,
-    document:documentReducer,
-    auth:authReducer
+    educationSection:educationReducer,
+    document:documentReducer
 })
-const rootReducer = (state=initialState,action)=>{
-    if(action.type===actionTypes.SIGN_OUT)
-    {
-        state=undefined;
-    }
-    return appReducer(state,action)
 
-}
 export default rootReducer;

@@ -26,7 +26,7 @@ function Contact(props) {
         // this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
         setContact({...contact,[key]:val})
     }
-    const onSubmit= async()=>{
+    const onSubmit=()=>{
         if(props.contactSection!=null){
             props.updateContact(contact);
         }
@@ -131,18 +131,18 @@ function Contact(props) {
         </div>
     );
 }
-const mapStateToProps= (state)=>{
+
+const mapStateToProps =(state)=>{
     return {
         contactSection:state.contactSection,
         document:state.document
     }
 }
-const mapDispatchToProps = dispatch=>{
+const mapDispatchToProps=(dispatch)=>{
     return {
         addContact:(contact)=>dispatch(contactActions.add(contact)),
         updateContact:(contact)=>dispatch(contactActions.update(contact))
-    } 
+    }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Contact)
-
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)
