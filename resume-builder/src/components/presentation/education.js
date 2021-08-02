@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 
 function Education(props) {
 
-  console.log(props);
+  // console.log(props);
   let history = useHistory();
   const [education,setEducation]= useState(props.educationSection);
 

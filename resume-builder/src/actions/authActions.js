@@ -1,3 +1,8 @@
+//Signin request->loading true
+//Signin success ->successful
+//Signin failure ->failed
+//Signin ->thunk call kr rha hoga
+
 import * as actionTypes from './actionTypes';
 
 export const signInRequest =()=>{
@@ -23,10 +28,10 @@ export const removeError = ()=>{
 
 export const signIn= (userData)=>{
     return async(dispatch,getState,obj)=>{
-        console.log(obj);
+        // console.log(obj);
         const {getFirebase,getFirestore} = obj
         dispatch(signInRequest())
-        console.log(getFirebase);
+        // console.log(getFirebase);
         const firebase = getFirebase();
         try{
             let data = await firebase.auth().signInWithEmailAndPassword(userData.email,userData.password);
