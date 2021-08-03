@@ -15,12 +15,12 @@ import { createFirestoreInstance } from 'redux-firestore';
 import { composeWithDevTools} from 'redux-devtools-extension'
 
 var firebaseConfig = {
-  apiKey: "AIzaSyB1LyKjsuSsNgsbq6TTxamJzeCfLNFt66M",
-  authDomain: "resume-builder-1a62b.firebaseapp.com",
-  projectId: "resume-builder-1a62b",
-  storageBucket: "resume-builder-1a62b.appspot.com",
-  messagingSenderId: "108934046645",
-  appId: "1:108934046645:web:a00623f0b5df556a4eaffc"
+  apiKey: "AIzaSyDCfavWc56k9kH1J9xTpxKJWuY7N-2ZjuI",
+  authDomain: "resume-builder-c18e9.firebaseapp.com",
+  projectId: "resume-builder-c18e9",
+  storageBucket: "resume-builder-c18e9.appspot.com",
+  messagingSenderId: "40219737249",
+  appId: "1:40219737249:web:99bb2217c9a613e07184e0"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

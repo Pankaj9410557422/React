@@ -30,9 +30,10 @@ const onSubmit=()=>{
 
   return (
     <>
-  {/* To save from multiple request */}
-    {/* {!isLoaded(props.auth)?<></>:<>
-      {props.authMine.loading?<h4 style={{marginTop:'10%',height:'52vh'}}>Patiently Wait...we are resgistering you in</h4>: */}
+    {
+      !isLoaded(props.auth)?<></>:<>
+      {
+        props.authMine.loading?<h4 style={{marginTop:'10%',height:'52vh'}}>Patiently Wait...we are resgistering you in</h4>:
         <div className="container med contact">
           <div className="section funnel-section">
               <div className="form-card">
@@ -60,8 +61,10 @@ const onSubmit=()=>{
 
           </div>
       </div>
-
+      }
       </>
+    }
+    </>
   );
 }
 
@@ -82,3 +85,5 @@ const mapDispatchToProps=dispatch=>{
 
 
   export default connect(mapStateToProps,mapDispatchToProps)(Register)
+
+ 
