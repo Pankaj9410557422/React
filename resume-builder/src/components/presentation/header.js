@@ -24,7 +24,7 @@ function LoggesOut(props) {
 const Header = (props) => {
   const auth = props.auth;
   const handleLogOut=()=>{
-  //  console.log('The user will sign out');
+   console.log('The user will sign out');
    props.signOut();
   }
 

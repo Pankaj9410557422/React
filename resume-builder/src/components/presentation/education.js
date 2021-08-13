@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 
 function Education(props) {
 
-  // console.log(props);
+  console.log(props);
   let history = useHistory();
   const [education,setEducation]= useState(props.educationSection);
 
@@ -98,20 +98,23 @@ function Education(props) {
     );
   }
 
-const mapStateToProps=(state)=>{
-  return {
-    contactSection: state.contactSection,
-    educationSection: state.educationSection,
-    document: state.document
-  }
-}
-
-const mapDispatchToProps=(dispatch)=>{
+const mapStateToProps = (state)=>{
   return{
+  contactSection:state.contactSection,
+  educationSection:state.educationSection,
+  document:state.document
+  }
+
+}
+const mapDispatchToProps = dispatch=>{
+  return {
     addEducation:(education)=>dispatch(educationActions.add(education)),
     updateEducation:(education)=>dispatch(educationActions.update(education))
   }
 }
 
-export default connect(mapStateToProps , mapDispatchToProps)(Education)
+  
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Education)
 

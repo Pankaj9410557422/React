@@ -28,7 +28,6 @@ firebase.firestore()
 
 const reduxStore = createStore(rootReducer,
   composeWithDevTools(
-    //with extra argument passses these arguments along with dispatch in our thunk
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})), 
     reduxFirestore(firebase) // redux bindings for firestore,  
   )

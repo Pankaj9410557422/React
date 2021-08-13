@@ -28,7 +28,7 @@ import {useFirestore} from 'react-redux-firebase'
      const downloadResume=()=> {
     
        const input = document.getElementById('resumePreview');
-      // console.log(document)
+      console.log(document)
        html2canvas(input)
          .then((canvas) => {
            const imgData = canvas.toDataURL('image/png');
